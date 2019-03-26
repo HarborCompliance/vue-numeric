@@ -304,8 +304,9 @@ export default {
      * @param {Object} e
      */
     onBlurHandler (e) {
-      this.$emit('blur', e)
-      this.amount = this.format(this.valueNumber)
+      this.$emit('blur', e);
+            console.log(this.valueNumber);
+      this.amount = this.format(this.valueNumber);
     },
 
     /**
@@ -313,7 +314,8 @@ export default {
      * @param {Object} e
      */
     onFocusHandler (e) {
-      this.$emit('focus', e)
+      this.$emit('focus', e);
+      console.log(this.valueNumber);
       if (this.valueNumber === null) {
         this.amount = null
       } else {
