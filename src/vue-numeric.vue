@@ -71,7 +71,6 @@ export default {
      * Value when the input is empty
      */
     emptyValue: {
-      type: [Number, String],
       default: '',
       required: false
     },
