@@ -132,7 +132,6 @@ export default {
     value: {
       default: '',
       required: true,
-      type: [String, Number],
       validator: (value) => {
         return value === null ||
                typeof value === 'number' ||
@@ -305,7 +304,6 @@ export default {
      */
     onBlurHandler (e) {
       this.$emit('blur', e);
-            console.log(this.valueNumber);
       this.amount = this.format(this.valueNumber);
     },
 
@@ -315,7 +313,6 @@ export default {
      */
     onFocusHandler (e) {
       this.$emit('focus', e);
-      console.log(this.valueNumber);
       if (this.valueNumber === null) {
         this.amount = null
       } else {
