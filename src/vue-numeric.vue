@@ -81,7 +81,7 @@ export default {
      */
     precision: {
       type: Number,
-      default: 0,
+      default: 2,
       required: false
     },
 
