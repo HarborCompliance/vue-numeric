@@ -369,7 +369,7 @@ export default {
       // if (value === '' || value === null) { return null; }
       if (this.isNull(value)) { return null; }
 
-      value = value.toFixed(fixed(this.precision));
+      value = value.toFixed(this.fixed(this.precision));
 
       return accounting.formatMoney(value, {
         symbol: this.currency,
@@ -381,7 +381,7 @@ export default {
     },
 
     fixed (precision) {
-      return between(0, precision, 20)
+      return this.between(0, precision, 20)
     },
 
     between (min, n, max) {
