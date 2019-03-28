@@ -352,7 +352,8 @@ export default {
       var output;
 
       if (value !== null) {
-        const fixedValue = accounting.toFixed(value, this.precision)
+        // const fixedValue = accounting.toFixed(value, this.precision);
+        const fixedValue = value.toFixed(this.fixed(this.precision));
         output = this.outputType.toLowerCase() === 'string' ? fixedValue : Number(fixedValue)
       } else {
         output = null;
