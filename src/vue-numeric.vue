@@ -315,7 +315,8 @@ export default {
       if (this.valueNumber === null) {
         this.amount = null
       } else {
-        this.amount = accounting.formatMoney(this.valueNumber, {
+        let value = this.valueNumber.toFixed(this.fixed(this.precision));
+        this.amount = accounting.formatMoney(value, {
           symbol: '',
           format: '%v',
           thousand: '',
