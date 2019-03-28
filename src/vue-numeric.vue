@@ -368,13 +368,24 @@ export default {
     format (value) {
       // if (value === '' || value === null) { return null; }
       if (this.isNull(value)) { return null; }
+
+      value = value.toFixed(fixed(this.precision));
+
       return accounting.formatMoney(value, {
         symbol: this.currency,
         format: this.symbolPosition,
         precision: Number(this.precision),
         decimal: this.decimalSeparatorSymbol,
         thousand: this.thousandSeparatorSymbol
-      })
+      });
+    },
+
+    fixed (precision) {
+      return between(0, precision, 20)
+    },
+
+    between (min, n, max) {
+      return Math.max(min, Math.min(n, max))
     },
 
     /**
