@@ -315,8 +315,7 @@ export default {
       if (this.valueNumber === null) {
         this.amount = null
       } else {
-        let value = this.valueNumber.toFixed(this.fixed(this.precision));
-        this.amount = accounting.formatMoney(value, {
+        this.amount = accounting.formatMoney(this.valueNumber, {
           symbol: '',
           format: '%v',
           thousand: '',
@@ -352,8 +351,7 @@ export default {
       var output;
 
       if (value !== null) {
-        // const fixedValue = accounting.toFixed(value, this.precision);
-        const fixedValue = value.toFixed(this.fixed(this.precision));
+        const fixedValue = accounting.toFixed(value, this.precision);
         output = this.outputType.toLowerCase() === 'string' ? fixedValue : Number(fixedValue)
       } else {
         output = null;
@@ -371,8 +369,6 @@ export default {
       // if (value === '' || value === null) { return null; }
       if (this.isNull(value)) { return null; }
 
-      value = value.toFixed(this.fixed(this.precision));
-
       return accounting.formatMoney(value, {
         symbol: this.currency,
         format: this.symbolPosition,
@@ -380,14 +376,6 @@ export default {
         decimal: this.decimalSeparatorSymbol,
         thousand: this.thousandSeparatorSymbol
       });
-    },
-
-    fixed (precision) {
-      return this.between(0, precision, 20)
-    },
-
-    between (min, n, max) {
-      return Math.max(min, Math.min(n, max))
     },
 
     /**
